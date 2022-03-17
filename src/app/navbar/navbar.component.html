@@ -1,18 +1,39 @@
 <div class="flex flex-row w-full h-full bg-gray-700 pl-12 pr-6">
-   
-  	 <div class="w-1/2 flex flex-column text-2xl text-white justify-start justify-items-center items-center">
-  		<h3 class="m-2 md:block hidden"> Sobre Nosotros </h3>
-  		<h3 class="m-2 md:block hidden"> Productos </h3>
-  		<h3 class="m-2 md:block hidden"> Inicio </h3>
-  		<button class="rounded-md bg-gray-600 p-2">
-  		<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 md:hidden block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+  <div
+    class="w-1/2 flex flex-column text-2xl text-white justify-start justify-items-center items-center"
+  >
+    <a href=""><h3 class="m-2 md:block hidden">Sobre Nosotros</h3></a>
+    <a href=""><h3 class="m-2 md:block hidden">Productos</h3></a>
+    <a href=""><h3 class="m-2 md:block hidden">Inicio</h3></a>
+    <button class="rounded-md bg-gray-600 p-2 md:hidden block">
+      <a>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 md:hidden block"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </a>
+    </button>
+  </div>
 
-</svg>
-</button>
-      </div>
-   
   <div class="w-1/2 flex flex row justify-end justify-items-end items-end py-2">
-    <img src="https://th.bing.com/th/id/R.a2bd14cfbe81441bf56ad3109da02ba8?rik=obc0FBIAG4x7ww&pid=ImgRaw&r=0" class="rounded-full w-12 h-12">
+    <button class="rounded-md bg-gray-600 mr-4">
+      <a routerLink="/Login" routerLinkActive="active"
+        ><h3 class="m-2 md:block hidden text-white">Iniciar Sesion</h3></a
+      >
+    </button>
+    <img
+      src="https://th.bing.com/th/id/R.a2bd14cfbe81441bf56ad3109da02ba8?rik=obc0FBIAG4x7ww&pid=ImgRaw&r=0"
+      class="rounded-full w-12 h-12"
+    />
   </div>
 </div>

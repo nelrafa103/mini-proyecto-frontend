@@ -8,9 +8,8 @@ describe('AdvertComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AdvertComponent ]
-    })
-    .compileComponents();
+      declarations: [AdvertComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
