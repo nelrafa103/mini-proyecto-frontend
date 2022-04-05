@@ -1,19 +1,22 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  constructor() {}
+  apiUrl: string
+  constructor(private http: HttpClient) {
+    this.apiUrl = 'https://fakestoreapi.com/products'
+  }
 
-  getProducts() {
-      /* Necesito utilizar http client para completar esto*/
-        
-     /*  let respond = fetch(`https://fakestoreapi.com/products?limit=5`)
-      .then((res) => res.json())
-      .then((json) => {return json})
-      .catch(() => console.log("It take to long")); 
-   
- */
+  getAllProducts(): any {
+   return this.http.get(this.apiUrl)
   } 
+
+  getNProducts(n: string){
+    return this.http.get(this.apiUrl + `?limit=` + {n})
+  }
 }
