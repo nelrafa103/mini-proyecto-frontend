@@ -13,6 +13,6 @@ export class LoginService {
         'Content-Type': 'application/json',
       },
     });
-    return true
+    return true;
   }
 }

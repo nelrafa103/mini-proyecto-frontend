@@ -7,8 +7,9 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { IntroComponent } from './intro/intro.component';
 import { AdvertComponent } from './advert/advert.component';
 import { FooterComponent } from './footer/footer.component';
-import { LoginComponent } from './login/login.component';
-import { ProductsComponent } from './products/products.component';
+import { LoginComponent } from './pages/login/login.component';
+import { ProductsComponent } from './pages/products/products.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,9 @@ import { ProductsComponent } from './products/products.component';
     AdvertComponent,
     FooterComponent,
     ProductsComponent,
+    HomeComponent,
   ],
-  imports: [BrowserModule,HttpClientModule, AppRoutingModule],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
