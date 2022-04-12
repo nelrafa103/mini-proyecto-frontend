@@ -2,7 +2,9 @@
   <div
     class="w-1/2 flex flex-column text-2xl text-white justify-start justify-items-center items-center"
   >
-    <a href=""><h3 class="m-2 md:block hidden">Sobre Nosotros</h3></a>
+    <a routerLink="/About" routerLinkActive="active"
+      ><h3 class="m-2 md:block hidden">Sobre Nosotros</h3></a
+    >
     <a routerLink="/Products" routerLinkActive="active"
       ><h3 class="m-2 md:block hidden">Productos</h3></a
     >
@@ -28,9 +30,15 @@
   </div>
 
   <div class="w-1/2 flex flex row justify-end justify-items-end items-end py-2">
-    <button class="rounded-md bg-gray-600 mr-4">
+    <button class="rounded-md bg-gray-600">
       <a routerLink="/Login" routerLinkActive="active"
         ><h3 class="m-2 md:block hidden text-white">Iniciar Sesion</h3></a
+      >
+    </button>
+    <p class="md:block hidden m-2 text-white">O</p>
+    <button class="rounded-md bg-gray-600 mr-4">
+      <a routerLink="/SignUp" routerLinkActive="active"
+        ><h3 class="m-2 md:block hidden text-white">Registrarse</h3></a
       >
     </button>
     <img

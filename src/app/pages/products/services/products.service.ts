@@ -13,10 +13,19 @@ export class ProductsService {
   }
 
   getAllProducts(): any {
-    return this.http.get(this.apiUrl + '/category/jewelery');
+    return this.http.get(this.apiUrl);
   }
 
   getNProducts(n: string) {
-    return this.http.get(this.apiUrl + `?limit=` + { n });
+    return this.http.get(this.apiUrl + '?limit=' + { n });
+  }
+  getJewelry(): any {
+    return this.http.get(this.apiUrl + '/category/jewelery');
+  }
+  getMensCloth() {
+    return this.http.get(this.apiUrl + "/category/men's clothing");
+  }
+  getWomensCloth() {
+    return this.http.get(this.apiUrl + "/category/men's clothing");
   }
 }

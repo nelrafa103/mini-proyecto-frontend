@@ -1,16 +1,33 @@
-<div class="w-full h-full" class="flex flex-row">
-  <div *ngFor="let product of response" >
-    <div class="max-w-sm rounded overflow-hidden shadow-lg">
-      <img
-        class="w-full"
-        src={{product.image}}
-        alt="Sunset in the mountains"
-      />
-      <div class="px-6 py-4">
-        <div class="font-bold text-xl mb-2">{{product.title}}</div>
-        <p class="text-gray-700 text-base">
-           {{product.description}}
-        </p>
+<app-navbar> </app-navbar>
+<div class="mx-12">
+  <div
+    class="w-full my-12 flex flex-col content-center justify-items-center items-center"
+  >
+    <p class="text-4xl text-center">Productos</p>
+    <div class="flex flex-row my-6">
+      <label class="mr-4">Para filtrar los resultados utilize:</label>
+      <select name="Categories" id="categorizer">
+        <option value="jewelry">Joyeria</option>
+        <option value="All">Todo</option>
+        <option value="pants">Pantalones</option>
+        <option value="shirts">Camisas</option>
+      </select>
+    </div>
+  </div>
+  <div class="w-full h-full flex flexr-row flex-wrap">
+    <div *ngFor="let product of response">
+      <div class="max-w-sm rounded overflow-hidden shadow-lg h-96 my-6">
+        <img
+          class="w-32 h-32"
+          src="{{ product.image }}"
+          alt="Sunset in the mountains"
+        />
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{{ product.title }}</div>
+          <p class="text-gray-700 text-base">
+            {{ product.description }}
+          </p>
+        </div>
       </div>
     </div>
   </div>
