@@ -6,11 +6,11 @@
     <p class="text-4xl text-center">Productos</p>
     <div class="flex flex-row my-6">
       <label class="mr-4">Para filtrar los resultados utilize:</label>
-      <select name="Categories" id="categorizer">
+      <select name="Categories" #categorizer (change)="ShowSelected()">
         <option value="jewelry">Joyeria</option>
         <option value="All">Todo</option>
-        <option value="pants">Pantalones</option>
-        <option value="shirts">Camisas</option>
+        <option value="mensCloth">Ropa Masculinas</option>
+        <option value="womensCloth">Ropa Femenina</option>
       </select>
     </div>
   </div>

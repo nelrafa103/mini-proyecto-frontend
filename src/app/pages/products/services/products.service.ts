@@ -13,6 +13,7 @@ export class ProductsService {
   }
 
   getAllProducts(): any {
+    // this.getNProducts(5)
     return this.http.get(this.apiUrl);
   }
 
@@ -26,6 +27,6 @@ export class ProductsService {
     return this.http.get(this.apiUrl + "/category/men's clothing");
   }
   getWomensCloth() {
-    return this.http.get(this.apiUrl + "/category/men's clothing");
+    return this.http.get(this.apiUrl + "/category/women's clothing");
   }
 }

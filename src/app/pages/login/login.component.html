@@ -1,7 +1,7 @@
 <div
-  class="flex flex-col w-auto py-6 content-center justify-items-center items-center m-16"
+  class="flex flex-col w-full content-center justify-items-center items-center"
 >
-  <div class="md:border-2 p-6">
+  <div class="md:border-2 px-6 w-1/2 my-6 pb-2">
     <div class="h-full mt-16">
       <h3 class="text-center text-lg">Iniciar Sesion</h3>
       <div class="flex flex-col md:flex-row py-6">
@@ -11,6 +11,7 @@
         <input
           type="input"
           name="form-mail"
+          #formmail
           class="rounded-md shadow-md h-8 p-2 border-gray-500 border-2"
         />
       </div>
@@ -21,13 +22,14 @@
         <input
           type="input"
           name="form-password"
+          #formpassword
           class="rounded-md shadow-md h-8 p-2 border-gray-500 border-2"
         />
       </div>
       <div
         class="flex h-1/2 content-center justify-items-center justify-center items-center"
       >
-        <button class="rounded-md bg-gray-600 h-12 mr-4">
+        <button class="rounded-md bg-gray-600 h-12 mr-4" (click)="Auth()">
           <a routerLink="/Login" routerLinkActive="active"
             ><h3 class="m-2 md:block hidden text-white">Iniciar Sesion</h3></a
           >
