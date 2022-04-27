@@ -1,6 +1,8 @@
-<div class="flex flex-row w-full h-full bg-gray-700 pl-12 pr-6">
+<nav
+  class="flex md:flex-row flex-col w-full h-full bg-gray-700 pl-12 pr-6 pt-2"
+>
   <div
-    class="w-1/2 flex flex-column text-2xl text-white justify-start justify-items-center items-center"
+    class="w-1/2 flex md:flex-row text-2xl text-white justify-start justify-items-center items-center"
   >
     <a routerLink="/About" routerLinkActive="active"
       ><h3 class="m-2 md:block hidden">Sobre Nosotros</h3></a
@@ -9,7 +11,10 @@
       ><h3 class="m-2 md:block hidden">Productos</h3></a
     >
     <a href=""><h3 class="m-2 md:block hidden">Inicio</h3></a>
-    <button class="rounded-md bg-gray-600 p-2 md:hidden block">
+    <button
+      class="rounded-md bg-gray-600 p-2 md:hidden block md:mb-0 mb-2"
+      (click)="OpenMenu()"
+    >
       <a>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -29,21 +34,120 @@
     </button>
   </div>
 
-  <div class="w-1/2 flex flex row justify-end justify-items-end items-end py-2">
-    <button class="rounded-md bg-gray-600">
+  <div
+    class="w-1/2 flex flex row justify-end justify-items-end items-end py-2 hidden md:flex"
+  >
+    <button
+      class="rounded-md bg-gray-600"
+      [ngClass]="isLogged ? 'relative' : 'hidden'"
+    >
       <a routerLink="/Login" routerLinkActive="active"
         ><h3 class="m-2 md:block hidden text-white">Iniciar Sesion</h3></a
       >
     </button>
-    <p class="md:block hidden m-2 text-white">O</p>
-    <button class="rounded-md bg-gray-600 mr-4">
+    <div  [ngClass]="isLogged ? 'relative' : 'hidden'">
+    <p
+      class="m-2 text-white"
+    >
+      O
+    </p>
+  </div>
+    <button
+      class="rounded-md bg-gray-600 mr-4"
+      [ngClass]="isLogged ? 'relative' : 'hidden'"
+    >
       <a routerLink="/SignUp" routerLinkActive="active"
         ><h3 class="m-2 md:block hidden text-white">Registrarse</h3></a
       >
     </button>
-    <img
-      src="https://th.bing.com/th/id/R.a2bd14cfbe81441bf56ad3109da02ba8?rik=obc0FBIAG4x7ww&pid=ImgRaw&r=0"
-      class="rounded-full w-12 h-12"
-    />
+    <div class="relative inline-block text-left">
+      <button class="" (click)="displayOptions()" [ngClass]="isLogged ? 'hidden' : 'relative'">
+        <img
+          src="https://th.bing.com/th/id/R.a2bd14cfbe81441bf56ad3109da02ba8?rik=obc0FBIAG4x7ww&pid=ImgRaw&r=0"
+          class="rounded-full w-12 h-12"
+        />
+      </button>
+      <div
+        class="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="menu-button"
+        tabindex="-1"
+        [ngClass]="isDisplayed ? 'absolute' : 'hidden'"
+      >
+        <div class="py-1" role="none">
+          <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+          <a
+            routerLink="/Account"
+            routerLinkActive="active"
+            class="text-gray-700 block px-4 py-2 text-sm"
+            role="menuitem"
+            tabindex="-1"
+            id="menu-item-0"
+            >Configuracion de la cuenta</a
+          >
+          <a
+            href="#"
+            (click)="closeSession()"
+            class="text-gray-700 block px-4 py-2 text-sm"
+            role="menuitem"
+            tabindex="-1"
+            id="menu-item-1"
+            >Cerrar Sesion</a
+          >
+          <div class="flex flex-row">
+            <a
+              routerLink="/Buy"
+              routerLinkActive="active"
+              class="text-gray-700 block px-4 py-2 text-sm"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-2"
+              >Carrito</a
+            >
+            <label></label>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  <div
+    class="inline-block text-left mt-6"
+    [ngClass]="isActive ? 'relative' : 'hidden'"
+  >
+    <div class="sm:hidden" id="mobile-menu">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+        <a
+          href="#"
+          class="text-white block px-3 py-2 rounded-md text-base font-medium"
+          aria-current="page"
+          >Sobre Nosotros</a
+        >
+
+        <a
+          href="#"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+          >Productos</a
+        >
+
+        <a
+          href="#"
+          class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+          >Inicio</a
+        >
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!--
+    Dropdown menu, show/hide based on menu state.
+
+    Entering: "transition ease-out duration-100"
+      From: "transform opacity-0 scale-95"
+      To: "transform opacity-100 scale-100"
+    Leaving: "transition ease-in duration-75"
+      From: "transform opacity-100 scale-100"
+      To: "transform opacity-0 scale-95"
+  -->

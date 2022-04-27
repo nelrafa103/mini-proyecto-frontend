@@ -11,6 +11,8 @@
         <input
           type=""
           #formmail
+          [ngModel]="email"
+          (ngModelChange)="EmailRegex()"
           name="form-mail"
           class="rounded-md shadow-md h-8 p-2 border-gray-500 border-2"
         />
@@ -20,8 +22,10 @@
           <h3 class="text-lg mr-6">Contraseña</h3>
         </div>
         <input
-          type=""
+          type="password"
           #formpassword
+          [ngModel]="password"
+          (ngModelChange)="PassRegex()"
           name="form-password"
           class="rounded-md shadow-md h-8 p-2 border-gray-500 border-2"
         />
@@ -31,19 +35,24 @@
           <h3 class="text-lg mr-6">Nombre</h3>
         </div>
         <input
-          type=""
+          type="input"
           #formname
+          [ngModel]="name"
+          (ngModelChange)="NameRegex()"
           name="form-name"
           class="rounded-md shadow-md h-8 p-2 border-gray-500 border-2"
         />
       </div>
+      <p class="text-center my-6">{{ serverMessage }}</p>
+      <p></p>
       <div
         class="flex h-1/2 content-center justify-items-center justify-center items-center"
       >
-        <button class="rounded-md bg-gray-600 h-12 mr-4">
-          <a routerLink="/Home" routerLinkActive="active"
-            ><h3 class="m-2 md:block hidden text-white">Registrarse</h3></a
-          >
+        <button
+          class="rounded-md bg-gray-600 mr-4 mt-6 md:mt-0 h-12 md:h-10 md:w-1/2 w-full"
+          (click)="Register()"
+        >
+          <a><h3 class="md:m-2 md:block text-white">Registrarse</h3></a>
         </button>
       </div>
     </div>

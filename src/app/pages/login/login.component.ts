@@ -5,6 +5,7 @@ import {
   AfterViewInit,
   OnInit,
 } from '@angular/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-login',
@@ -13,15 +14,18 @@ import {
 })
 export class LoginComponent implements AfterViewInit {
   @ViewChild('formmail') emailRef!: ElementRef;
+  private user: any;
+  public LoginMessage: string;
   @ViewChild('formpassword') passwordRef!: ElementRef;
-  constructor() {}
+  constructor(private cookieService: CookieService) {
+    this.LoginMessage = '';
+  }
 
   ngAfterViewInit() {
     console.log(this.emailRef);
   }
 
   public Auth() {
-    console.log('Authenticating..');
     fetch('http://127.0.0.1:3000/login', {
       method: 'POST',
       body: JSON.stringify({
@@ -34,11 +38,22 @@ export class LoginComponent implements AfterViewInit {
     })
       .then((response) => response.json())
       .then((response) => {
-        /*console.log(response)
-        console.log(this.emailRef,this.passwordRef)*/
+        this.user = response.Body;
+        this.LoginMessage = response.Status;
+        if (this.LoginMessage == 'Log in approved') {
+          location.href = location.origin + '/Home'
+          this.SetInCookies(this.user);
+        }
       })
-      .catch(() => {
-        console.log('No se ha podido realizar el logIn');
+      .catch((response) => {
+        this.LoginMessage = 'Invalid logIn';
       });
+  }
+  public changeName() {}
+  public changePassword() {}
+  public changeEmail() {}
+  private SetInCookies(user: any) {
+    this.user = user;
+    this.cookieService.set('Email', user.email);
   }
 }

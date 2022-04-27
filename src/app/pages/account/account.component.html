@@ -1,9 +1,12 @@
 <div
   class="flex flex-col w-full content-center justify-items-center items-center"
 >
-  <div class="md:border-2 px-6 my-6 pb-2 h-full">
-    <div class="h-full mt-16">
-      <h3 class="text-center text-lg">Iniciar Sesion</h3>
+  <div class="md:border-2 px-6 md:w-1/2 my-6 pb-2 md:h-full">
+    <div class="h-full mt-16 flex flex-col">
+      <img
+        src="https://th.bing.com/th/id/R.a2bd14cfbe81441bf56ad3109da02ba8?rik=obc0FBIAG4x7ww&pid=ImgRaw&r=0"
+        class="rounded-full w-12 h-12"
+      />
       <div class="flex flex-col md:flex-row py-6">
         <div class="md:w-1/3 w-full text-center md:text-left">
           <h3 class="text-lg mr-6">Correo Electronico</h3>
@@ -11,6 +14,7 @@
         <input
           type="input"
           name="form-mail"
+          [ngModel]="User.Email"
           #formmail
           class="rounded-md shadow-md h-8 p-2 border-gray-500 border-2"
         />
@@ -22,20 +26,31 @@
         <input
           type="password"
           name="form-password"
+          [ngModel]="User.Password"
           #formpassword
           class="rounded-md shadow-md h-8 p-2 border-gray-500 border-2"
         />
       </div>
-      <p class="my-8 text-center">{{ LoginMessage }}</p>
-      <div
-        class="flex h-1/2 content-center justify-items-center justify-center items-center"
-      >
+      <div class="flex flex-col md:flex-row py-6">
+        <div class="md:w-1/3 w-full text-center md:text-left">
+          <h3 class="text-lg mr-6">Nombre</h3>
+        </div>
+        <input
+          type="input"
+          name="form-name"
+          [ngModel]="User.Name"
+          #formname
+          class="rounded-md shadow-md h-8 p-2 border-gray-500 border-2"
+        />
+      </div>
+      <div class="flex justify-items-center justify-center">
         <button
           class="rounded-md bg-gray-600 mr-4 mt-6 md:mt-0 h-12 md:h-10 md:w-1/2 w-full"
-          (click)="Auth()"
+          disabled
         >
-          <a><h3 class="md:m-2 md:block text-white">Entrar</h3></a>
+          <a><h3 class="md:m-2 md:block text-white">Actualizar</h3></a>
         </button>
+        <div></div>
       </div>
     </div>
   </div>
