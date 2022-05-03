@@ -6,7 +6,7 @@ import {
   AfterViewInit,
 } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import {LoginService} from '../../login.service'
+import { LoginService } from '../../login.service';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
@@ -22,24 +22,29 @@ export class AccountComponent implements AfterViewInit {
   private Email: string;
   @ViewChild('formmail') emailRef!: ElementRef;
 
-  constructor(private cookieService: CookieService,private Login:LoginService) {
+  constructor(
+    private cookieService: CookieService,
+    private Login: LoginService
+  ) {
     this.Message = '';
     this.Email = '';
   }
 
   ngAfterViewInit(): void {
     this.getUserData();
-    this.Login.CheckLogin()
+    this.Login.CheckLogin();
     this.Email = this.cookieService.get('Email');
     this.getUserData();
     // console.log(this.Email)
   }
 
   getUserData(): void {
+    let token: string = this.cookieService.get("token")
     fetch('http://127.0.0.1:3000/account', {
       method: 'POST',
       body: JSON.stringify({
         Email: this.Email,
+        Token: token
       }),
       headers: {
         'Content-Type': 'application/json',
@@ -47,6 +52,7 @@ export class AccountComponent implements AfterViewInit {
     })
       .then((response) => response.json())
       .then((response) => {
+        console.log(response)
         this.Message = 'Something goes wrong';
         this.User.Name = response.name;
         this.User.Email = response.email;

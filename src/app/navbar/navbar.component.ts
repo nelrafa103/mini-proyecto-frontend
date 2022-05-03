@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import {LoginService} from '../login.service'
+import { LoginService } from '../login.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,15 +12,18 @@ export class NavbarComponent implements OnInit {
   public isDisplayed: boolean;
   public isLogged: boolean;
   private cookieValue: any;
-  constructor(private cookieService: CookieService, private Login: LoginService) {
+  constructor(
+    private cookieService: CookieService,
+    private Login: LoginService
+  ) {
     this.isActive = false;
     this.isLogged = false;
     this.isDisplayed = false;
   }
 
   ngOnInit(): void {
-    this.cookieValue = this.cookieService.check('Email');
-   
+    this.cookieValue = this.cookieService.check('token');
+
     this.CheckEmail();
   }
 
@@ -50,6 +53,6 @@ export class NavbarComponent implements OnInit {
   }
 
   public closeSession() {
-     this.Login.LogOut()
+    this.Login.LogOut();
   }
 }

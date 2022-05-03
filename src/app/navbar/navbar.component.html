@@ -45,13 +45,9 @@
         ><h3 class="m-2 md:block hidden text-white">Iniciar Sesion</h3></a
       >
     </button>
-    <div  [ngClass]="isLogged ? 'relative' : 'hidden'">
-    <p
-      class="m-2 text-white"
-    >
-      O
-    </p>
-  </div>
+    <div [ngClass]="isLogged ? 'relative' : 'hidden'">
+      <p class="m-2 text-white">O</p>
+    </div>
     <button
       class="rounded-md bg-gray-600 mr-4"
       [ngClass]="isLogged ? 'relative' : 'hidden'"
@@ -61,7 +57,11 @@
       >
     </button>
     <div class="relative inline-block text-left">
-      <button class="" (click)="displayOptions()" [ngClass]="isLogged ? 'hidden' : 'relative'">
+      <button
+        class=""
+        (click)="displayOptions()"
+        [ngClass]="isLogged ? 'hidden' : 'relative'"
+      >
         <img
           src="https://th.bing.com/th/id/R.a2bd14cfbe81441bf56ad3109da02ba8?rik=obc0FBIAG4x7ww&pid=ImgRaw&r=0"
           class="rounded-full w-12 h-12"

@@ -90,7 +90,9 @@ export class ProductsComponent implements AfterViewInit {
   }
   ngAfterViewInit() {
     // Search for data saved here in produdcts ids selected
-    this.idSelectedProd = JSON.parse(this.cookieService.get('ids'));
+    let index: any = JSON.parse(this.cookieService.get('ids'));
+    this.idSelectedProd.ids = this.idSelectedProd.ids.concat(index.ids);
+    console.log(this.cookieService.get('ids'));
     this.getTotallyProducts();
   }
   public ShowSelected() {
@@ -112,11 +114,13 @@ export class ProductsComponent implements AfterViewInit {
     }
   }
   addProduct(id: number) {
+    console.log(id);
+    console.log(this.idSelectedProd.ids);
     this.SelectedProducts.push(this.response[id]);
-    this.idSelectedProd['ids'].push(id);
+    this.idSelectedProd.ids.push(id);
     this.cookieService.set(
       'bag' + id.toString(),
-      JSON.stringify(this.response[id])
+      JSON.stringify(this.response[id - 1])
     );
     this.cookieService.set('ids', JSON.stringify(this.idSelectedProd));
     this.setCount();

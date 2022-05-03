@@ -9,14 +9,15 @@ export class LoginService {
     // LoginService.counter = LoginService.counter
   }
   CheckLogin(): boolean {
-    console.log(this.cookieService.check("Email"))
-    if(this.cookieService.check("Email") == false){
-      location.href = location.origin + '/Login'
-    } 
+    console.log(this.cookieService.check('token'));
+    if (this.cookieService.check('token') == false) {
+      location.href = location.origin + '/Login';
+    }
     return false;
   }
 
-   LogOut() {
-   this.cookieService.delete("Email")
+  LogOut() {
+    this.cookieService.delete('token');
+    this.cookieService.delete('Email');
   }
 }

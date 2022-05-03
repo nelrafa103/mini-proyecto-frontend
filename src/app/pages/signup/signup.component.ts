@@ -42,7 +42,7 @@ export class SignupComponent implements AfterViewInit {
   }
   public EmailRegex(): boolean {
     const emailRegex =
-      /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+      /^[a-zA-Z.!#$%&’*+/=?^_`{|}~-]+[a-zA-]+(?:\.[a-zA-Z0-9-]+)*$/;
     const emailValue = this.emailRef.nativeElement.value;
     // Probing the diferent cases
     if (emailValue.match(emailRegex) != null) {
@@ -95,7 +95,7 @@ export class SignupComponent implements AfterViewInit {
           const status = response.Status;
           const body = response.Body;
           if (body == 'Log in approved') {
-            location.href = location.origin + '/Home'
+            location.href = location.origin + '/Home';
             this.SetInCookies(body);
           } else {
             this.serverMessage = status;

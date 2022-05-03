@@ -16,14 +16,15 @@
             <div
               *ngFor="let product of selectedProducts"
               class="group relative shadow-md focus:hidden"
-              id="{{product.id}}"
+              id="{{ product.id }}"
               #{{product.title}}
               (click)="
                 showDataProduct(
                   product.description,
                   product.category,
                   product.price,
-                  product.title
+                  product.title,
+                  product.quantity
                 )
               "
             >
@@ -48,10 +49,34 @@
                   {{ product.price }}
                 </p>
               </div>
+              <div *ngIf="product.quantity > 1" class="flex justify-between">
+                <input
+                  type="input"
+                  name=""
+                  disabled
+                  value="{{ product.quantity }}"
+                  class="bg-none m-4"
+                />
+              </div>
               <div
                 class="m-4 place-content-end place-items-end flex justify-between justify-end justify-items-end w-full content-end"
               >
-                <button class="bg-blue-700 p-2 text-white self-end"  (click)="deleteProduct(product.id)">
+                <button
+                  class="bg-blue-700 p-2 text-white self-end"
+                  (click)="
+                    isOnCart
+                      ? cancelBuy(
+                          product.description,
+                          product.category,
+                          product.price,
+                          product.title,
+                          product.bag,
+                          product.quantity,
+                          product.id
+                        )
+                      : deleteProduct(product.id)
+                  "
+                >
                   Eliminar Producto
                 </button>
               </div>
@@ -82,10 +107,19 @@
 
         <form class="mt-10">
           <!-- Colors -->
-             <label for="email-address" class="sr-only">Email address</label>
-            <input id="email-address" name="email" type="email" autocomplete="email" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Email address" />
+          <p class="text-lg mb-2">Quantity</p>
+          <label for="email-address" class="sr-only">Quantity</label>
+          <input
+            disabled
+            value=""
+            #counter
+            required=""
+            class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+            placeholder=""
+          />
           <button
             #formbutton
+            (click)="isOnCart ? buyProducts() : saveProducts()"
             type="submit"
             class="mt-10 w-full bg-blue-600 border border-transparent py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >

@@ -38,11 +38,13 @@ export class LoginComponent implements AfterViewInit {
     })
       .then((response) => response.json())
       .then((response) => {
+        console.log(response)
         this.user = response.Body;
         this.LoginMessage = response.Status;
         if (this.LoginMessage == 'Log in approved') {
-          location.href = location.origin + '/Home'
-          this.SetInCookies(this.user);
+          location.href = location.origin + '/Home';
+          //this.SetInCookies(this.user);
+          this.cookieService.set('token',response.Token)
         }
       })
       .catch((response) => {
